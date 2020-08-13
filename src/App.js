@@ -5,23 +5,7 @@ import {db} from './Firebase/Firebase';
 
 function App() {
 
-  const [posts,setPosts] = useState([
-    // {
-    //   username:"Yoma",
-    //   caption: "What a cool language",
-    //   imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSPZFg85p9XNbhOjhgiCnuxHsIAlG3y-PWaaA&usqp=CAU"
-    // },
-    // {
-    //   username: "Emmanuel",
-    //   caption: "I love Angular",
-    //   imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS1hgdHQGexNLMgFAl2bspz6yehydAMPnq3CQ&usqp=CAU"
-    // },
-    // {
-    //   username: "Imyke",
-    //   caption: "Dev ops 💪 💯",
-    //   imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRNadKOrSRqNE9K5NSOIr7ZUcrq6Y0VPilwbQ&usqp=CAU"
-    // }
-  ]);
+  const [posts,setPosts] = useState([]);
 
   //useEffect
   useEffect(() => {

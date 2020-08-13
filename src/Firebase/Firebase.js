@@ -12,6 +12,7 @@ import firebase from "firebase";
   });
 
 
+  //why do we use firebaseApp.firestore();
   const db = firebaseApp.firestore();
   const auth = firebase.auth();
   const storage = firebase.storage();

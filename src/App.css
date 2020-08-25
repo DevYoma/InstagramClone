@@ -4,7 +4,7 @@
 
 .App{
   background-color: #fafafa;
-  height: 100vh;
+  height: fit-content;
 }
 
 .app__header{
@@ -15,4 +15,17 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+.modal__header{
+  font-family: cursive;
+}
+
+.app__signup{
+}
+
+.modal__input{
+  display: block !important;
+  margin-left: 20px;
+  padding: 10px;
 }

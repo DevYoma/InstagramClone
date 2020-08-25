@@ -125,7 +125,15 @@ function App() {
 
       <h1>Hello, we are building the instagram clone 🚀</h1>
 
-      <Button onClick={() => setOpen(true)}>Sign Up</Button>
+      {/* <Button onClick={() => setOpen(true)}>Sign Up</Button> */}
+      {
+        user ? (
+          <Button onClick={() => auth.signOut()}>Logout</Button>
+        ) : 
+        (
+          <Button onClick={() => setOpen(true)}>Sign Up</Button>
+        )
+      }
 
       {
         //now post is an obj with keys from firebase

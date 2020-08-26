@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Post from './Components/Post';
+import ImageUpload from './Components/ImageUpload'
 import {db, auth} from './Firebase/Firebase';
 import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -96,6 +97,10 @@ function App() {
     })
     .catch((error) => alert(error.message))
 
+    if(auth){
+      window.alert('Account created')
+    }
+
     setOpen(false)
   }
 
@@ -108,6 +113,10 @@ function App() {
       .signInWithEmailAndPassword(email, password)
       .catch((error) => alert(error.message))
 
+    if(auth){
+      window.alert('signed In')
+    }
+
       //closing the modal
       setOpenSignIn(false)
   }
@@ -115,7 +124,13 @@ function App() {
   return (
 
     <div className="App">
-
+      {/* optionals in javascript ===> appData? */}
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName}/>
+      ) : (
+        <h3>Oops 😞, you are not logged in</h3>
+      )}
+    {/* <ImageUpload username={user.displayName}/> */}
       {/* Modal 1:29:57 */}
     <Modal open={open} onClose={() => setOpen(false)}>
       <div style={modalStyle} className={classes.paper}>

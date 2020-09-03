@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
 import {storage, db} from '../Firebase/Firebase';
 import {firebase} from '../Firebase/Firebase'
+import './ImageUpload.css';
 
 
 const ImageUpload = ({username}) => {
@@ -26,6 +27,8 @@ const ImageUpload = ({username}) => {
     }
 
     const handleUpload = (e) => {
+
+        e.preventDefault();
         //uploading to firebase storage... the code here uploads the picture to firebase
         const uploadTask = storage.ref(`images/${image.name}`).put(image);
 
@@ -33,12 +36,13 @@ const ImageUpload = ({username}) => {
             "state_changed", 
             (snapshot) => {
                 //progress bar code
-                const progress = Math.round(
+                const progressBar = Math.round(
                     (snapshot.bytesTransferred / snapshot.totalBytes) * 100
                 );
-                setProgress(progress)
+                setProgress(progressBar)
             },
             (error) => {
+                //Error function
                 console.log(error);
                 alert(error.message)
             },
@@ -50,35 +54,34 @@ const ImageUpload = ({username}) => {
                     .getDownloadURL()
                     .then(url => {
                         //posting image inside db
-                        db.collection('posts').add({
-                            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                            caption: caption,
-                            //the download url we got hold of above.. on line 50
-                            imageUrl: url,
-                            username: username
-                        });
-
-                        setProgress(0);
-                        setCaption('');
-                        setImage(null);
-                      
-                    })
+                    db.collection('posts').add({
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                        caption: caption,
+                        //the download url we got hold of above.. on line 50
+                        imageUrl: url,
+                        username: username
+                    });
+                    
+                        // if(url){
+                            setProgress(0);
+                            setCaption("");
+                            setImage(null);
+                        // }
+                    });
 
             }
         )
+
+                     
     }
 
     return ( 
         
-        <div>
-            image upload component
-            {/* caption input */}
-            {/* file picker */}
-            {/* post button */}
-
-            <progress value={progress} max="100"/>
-            <input type="text" placeholder="Enter a caption" onChange={(e) => setCaption(e.target.value)} />
-            <input type="file" onChange={handleChange}/>
+        <div className="imageUpload">
+            
+            <progress className="imageUpload__progress" value={progress} max="100"/>
+            <input type="text" placeholder="Enter a caption" onChange={(e) => setCaption(e.target.value)} required />
+            <input type="file" onChange={handleChange} required/>
             <span>
                 {error && <span className="error">{error}</span>}
             </span>

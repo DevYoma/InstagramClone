@@ -7,6 +7,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { Button } from '@material-ui/core';
 import { Input } from '@material-ui/core';
+import InstagramEmbed from 'react-instagram-embed';
  
 function getModalStyle() {
   const top = 50;
@@ -49,7 +50,7 @@ function App() {
 
   //useEffect for the posts from database
   useEffect(() => {
-    db.collection('posts').onSnapshot((snapshot) => {
+    db.collection('posts').orderBy('timestamp', 'desc').onSnapshot((snapshot) => {
       setPosts(snapshot.docs.map(doc => (
         {
           id: doc.id,
@@ -125,13 +126,8 @@ function App() {
 
     <div className="App">
       {/* optionals in javascript ===> appData? */}
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName}/>
-      ) : (
-        <h3>Oops 😞, you are not logged in</h3>
-      )}
+     
     {/* <ImageUpload username={user.displayName}/> */}
-      {/* Modal 1:29:57 */}
     <Modal open={open} onClose={() => setOpen(false)}>
       <div style={modalStyle} className={classes.paper}>
             <form className="app.signup">
@@ -170,30 +166,55 @@ function App() {
       {/* Header */}
       <div className="app__header">
         <h2>Instagram</h2>
-      </div>
-
-      <h1>Hello, we are building the instagram clone 🚀</h1>
-
-      {/* <Button onClick={() => setOpen(true)}>Sign Up</Button> */}
-      {
+        {
         user ? (
           <Button onClick={() => auth.signOut()}>Logout</Button>
         ) : 
         (
           <div className="app__loginContainer">
-              <Button onClick={() => setOpenSignIn(true)}>Sign/Log In</Button>
+              <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
               <Button onClick={() => setOpen(true)}>Sign Up</Button>
           </div>
           
         )
       }
+      </div>
 
-      {
-        //now post is an obj with keys from firebase
-        posts.map(({id, post}) => (
-          <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
-        ))
-      }
+      <div className="app__posts">
+        <div className="app__postsLeft">
+          {
+              //now post is an obj with keys from firebase
+              posts.map(({id, post}) => (
+                <Post key={id} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+              ))
+          }
+        </div>
+
+
+        <div className="app__postsRight">
+          <InstagramEmbed
+          className="instagram__embed"
+          url='https://www.instagram.com/p/B1NHR86FjCS/'
+          maxWidth={320}
+          hideCaption={false}
+          containerTagName='div'
+          protocol=''
+          injectScript
+          onLoading={() => {}}
+          onSuccess={() => {}}
+          onAfterRender={() => {}}
+          onFailure={() => {}}
+          />
+        </div> 
+       
+         
+      </div>
+
+      {user?.displayName ? (
+              <ImageUpload username={user.displayName}/>
+            ) : (
+              <h3>Oops 😞, you are not logged in</h3>
+            )}
      
 
     </div>

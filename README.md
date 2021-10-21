@@ -25,7 +25,7 @@ Link https://yoma-instagram.web.app
 - Posting photos
   - photos uploaded gets sent to backend(firebase) and gets posted to all users(not minding if they are signed in or not)
   - no empty photo is allowed to be sent(validation)
- - Sign Up and Sign IN
+ - Sign Up, Sign In and Logout functionality
   - only signed in users can post photos and comment on photos
  
 ## Stack

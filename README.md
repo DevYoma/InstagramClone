@@ -1,5 +1,5 @@
 # Instagram Clone 
-A simple web application for sharing your photos
+A simple web application for sharing your photos.
 Link https://yoma-instagram.web.app
 
 ## How to run the app

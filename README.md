@@ -37,5 +37,7 @@ Link https://yoma-instagram.web.app
 
 ## What the app looks like
 ![instagramShot1](https://user-images.githubusercontent.com/47899828/138361951-5a7d3230-27b9-4881-af95-ead1e0cef7af.png)
+
+
 ![instagramShot2](https://user-images.githubusercontent.com/47899828/138362017-2c73d5c7-d82a-48db-bd0a-babe3ba7d014.png)
 

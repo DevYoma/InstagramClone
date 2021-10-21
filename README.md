@@ -35,4 +35,3 @@ Link https://yoma-instagram.web.app
 - Firebase(Sign up, Sign In, Logout Feature)
 - Firebase hosting
 
-## What the app looks like

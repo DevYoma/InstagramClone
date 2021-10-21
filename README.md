@@ -10,13 +10,29 @@ Link https://yoma-instagram.web.app
 
 ## How to Get Started using the App
 1. Click on the Sign Up Button.
-2. Now you have to Sign In.
-3. You will see an alert saying `signed in`
-4. Scroll to the bottom of the page or just press the `end` key on your keyboard
-5. Choose a photo you want to share and enter a caption(this is optional)
-6. Click on the upload button
+2. You will see an alert saying `Account Created`. (Signing up automatically signs you in so you proceed with `step5`)
+3. If you are revisiting the site and you have signed up, proceed to the `Sign In` button.
+4. You will see an alert saying `signed in`.
+5. Scroll to the bottom of the page or just press the `end` key on your keyboard.
+6. Choose a photo you want to share and enter a caption(this is optional).
+7. Click on the upload button.
 
 ## User Stories
 1. A user that is not logged in can see photos uploaded but can't post photos or comment
 2. A user that is logged in can post and comment(on his/her post and other posts)
 
+## Features
+- Posting photos
+  - photos uploaded gets sent to backend(firebase) and gets posted to all users(not minding if they are signed in or not)
+  - no empty photo is allowed to be sent(validation)
+ - Sign Up and Sign IN
+  - only signed in users can post photos and comment on photos
+ 
+## Stack
+- React JS
+- Material UI
+- Firebase Firestore
+- Firebase(Sign up, Sign In, Logout Feature)
+- Firebase hosting
+
+## What the app looks like
